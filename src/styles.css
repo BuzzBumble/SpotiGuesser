@@ -1,0 +1,21 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#map {
+  margin-top:10px;
+  height: 400px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+body {
+  background-color: #181818;
+  color: #1ED760;
+}
+
+a {
+  margin: 5px;
+  color: white;
+}
