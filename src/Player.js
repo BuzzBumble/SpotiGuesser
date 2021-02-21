@@ -2,6 +2,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import {useEffect, useState} from 'react';
 import {getSpotifyToken, getSpotifyPlaylist} from './helpers/spotify';
 import {getCountry} from './helpers/happi-dev';
+import ResultDisplay from './ResultDisplay';
 
 const playlist_id = "3OLYDyPxRRHWASFWJ4D7I6";
 
@@ -40,12 +41,26 @@ export default function Player(props) {
     }
   },[currentTrack]);
 
+  function onNextSong(){
+    let removed = playlist.shift();
+    setCurrentTrack(playlist[0]);
+    props.setPlaying(true);
+  }
+
+  let resultDisplay="";
+  if (!props.playing){
+    resultDisplay = <ResultDisplay track={currentTrack} onNextSong={onNextSong}/>
+  }
   return (
-    <ReactAudioPlayer
-      src={currentTrack?currentTrack.preview_url: ""}
-      volume={0.3}
-      controls
-    />
+    <div>
+      <ReactAudioPlayer
+        src={currentTrack?currentTrack.preview_url: ""}
+        volume={0.3}
+        controls
+      />
+      {resultDisplay}
+    </div>
+    
   );
 }
 
