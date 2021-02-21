@@ -8,6 +8,19 @@
   text-align: center;
 }
 
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo{
+  height:45px;
+  width:45px;
+  margin: 10px;
+}
+
 #map {
   height: 400px;
   width: 95%;
