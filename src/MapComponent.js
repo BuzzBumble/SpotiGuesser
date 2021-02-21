@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import mapData from './data/countries.json'
 
-export default function MapComponent() {
+export default function MapComponent(props) {
   const bounds = new L.LatLngBounds(new L.LatLng(-90,-180), new L.LatLng(90,180));
 
   const state = {
@@ -20,6 +20,7 @@ export default function MapComponent() {
   let currentCountry = null;
 
   const highlightCountry = (event, countryName) => {
+    props.onCountryChange(countryName);
     console.log(countryName);
     if (currentCountry != null) {
       currentCountry.setStyle({
@@ -34,7 +35,6 @@ export default function MapComponent() {
   };
 
   const onEachCountry = (country, layer) => {
-
     const countryName = country.properties.ADMIN;
 
     layer.bindPopup(`${countryName}`);
@@ -60,7 +60,11 @@ export default function MapComponent() {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry}/>
+      <GeoJSON 
+        style={countryStyle} 
+        data={mapData.features} 
+        onEachFeature={onEachCountry}
+      />
     </MapContainer>
   );
 }
