@@ -5,20 +5,24 @@ import Player from './Player';
 import AppButton from "./AppButton";
 
 import {useEffect, useState} from 'react';
+let trackCountryHistory = [];
+let selectedCountryHistory = [];
 
 export default function App(){
   const [score, setScore] = useState(0);
-  const [choice, setChoice] = useState({});
-  const trackCountryHistory = [];
-  const selectedCountryHistory = [];
+  const [choice, setChoice] = useState();
+  
   // const [trackCountryHistory, setTrackCountry] = useState([]);
   // const [selectedCountryHistory, setSelectedCountry] = useState([]);
   function calcTurn(){
-    selectedCountryHistory.push(choice.ISO_A2.toLowerCase());
-    
-    if(selectedCountryHistory[selectedCountryHistory.length-1] === trackCountryHistory[trackCountryHistory.length-1]){
-      console.log("correct");
-      setScore(score+1);
+    if(choice){
+      selectedCountryHistory.push(choice.ISO_A2.toLowerCase());
+      console.log(selectedCountryHistory);
+      console.log(trackCountryHistory);
+      if(selectedCountryHistory[selectedCountryHistory.length-1] === trackCountryHistory[trackCountryHistory.length-1]){
+        console.log("correct");
+        setScore(score+1);
+      }
     }
   }
 
@@ -31,7 +35,7 @@ export default function App(){
         trackCountryHistory.push(trackCountry);
         console.log(trackCountryHistory)}}/>
       <AppButton text="Make Guess" onClick={calcTurn}/>
-      <div>Choice: {choice.ADMIN}</div>
+      <div>Choice: {choice?choice.ADMIN:""}</div>
     </div>
   );
 }

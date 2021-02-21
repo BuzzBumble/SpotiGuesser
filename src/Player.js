@@ -34,7 +34,6 @@ export default function Player(props) {
           let removed = playlist.shift();
           setCurrentTrack(playlist[0]);
         }else{
-          console.log(country)
           props.setCountry(country)
         }
       })
