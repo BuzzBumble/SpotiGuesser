@@ -1,9 +1,9 @@
 # SpotiGuesser
+![logo gif](./img/Slide3_2.gif)
 ## geoguesser for spotify
-<!-- ![demo gif](./content/4tb888.gif) -->
-
 Ever wonder what music around the world sounds like? Let's explore the world with our ears!
 
+Try it out here: https://spotiguesser.tech/
 
 ## Inspiration
 Our team of GeoGuesser enthusiasts came into this hackathon hoping to work with the Spotify API. Spotiguesser came to mind after stumbling across a Roadtrip app in Spotify's community showcase. With the lack of a beef jerky api to create roadtrip snack app, we decided to make a spin on our favorite game!!! uwu
@@ -12,6 +12,7 @@ SpotiGuesser brings players around the world to challenges their perceptions of 
 
 
 ## What it does
+![logo gif](./img/demo.gif)
 SpotiGuesser is web based game where 30 seconds of a randomly selected song is played and users gain points for correctly guessing the correct nationality of the song's artist.
 
 ## How it works
@@ -49,7 +50,7 @@ The front-end is built with React using functional components and hooks. Our map
 // our team: 
     'group_member_0': [estevan sinarta](https://github.com/esinarta),
     'group_member_1': [trung bui](https://github.com/imqt),
-    'group_member_2': [vivian wi](https://github.com/vvnwu),
+    'group_member_2': [vivian wu](https://github.com/vvnwu),
     'group_member_3': [steven kang](https://github.com/BuzzBumble)
 ```
 
