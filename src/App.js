@@ -14,6 +14,11 @@ export default function App(){
   const [playing, setPlaying] = useState(true);
   const [done, setDone] = useState(false);
   const [guessable, setGuessable] = useState(false);
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 6000)
+  }, [])
   
   // const [trackCountryHistory, setTrackCountry] = useState([]);
   // const [selectedCountryHistory, setSelectedCountry] = useState([]);
@@ -42,22 +47,26 @@ export default function App(){
 
   return (
     <div id="App" className="App">
-    <div className="title">
-      <img id="logo" src="./img/spotiguesser.svg"/>
-      <h1>SpotiGuessr</h1>
-    </div> 
-      {!done? <div><MapComponent playing={playing} onCountryChange={(country) => {setChoice(country);}} />
-      <Player setGuessable={setGuessable}
-        playing={playing} setPlaying={setPlaying}
-        setCountry={(trackCountry)=>{
-        trackCountryHistory.push(trackCountry);}}/>
-      {playing && <AppButton text={guessable ? "Make Guess" : "Please Wait"} enabled={guessable} onClick={makeGuess}/>}
-      {choice && <div>Choice: {choice.ADMIN}</div>}</div> : <br/>}
+      {/* <div id="Loading" style={`display:${!loading?'none':'block'}`}>
+        <img src="./img/Slide3_2.gif"/>
+      </div> style={`display:${loading?'none':'block'}`*/}
+      <div id="game" >
+        <div className="title">
+          <img id="logo" src="./img/spotiguesser.svg"/>
+          <h1>SpotiGuessr</h1>
+        </div> 
+        {!done? <div><MapComponent playing={playing} onCountryChange={(country) => {setChoice(country);}} />
+        <Player setGuessable={setGuessable}
+          playing={playing} setPlaying={setPlaying}
+          setCountry={(trackCountry)=>{
+          trackCountryHistory.push(trackCountry);}}/>
+        {playing && <AppButton text={guessable ? "Make Guess" : "Please Wait"} enabled={guessable} onClick={makeGuess}/>}
+        {choice && <div>Choice: {choice.ADMIN}</div>}</div> : <br/>}
 
-      <div>Score: {score}</div>
+        <div>Score: {score}</div>
 
-      {done && <AppButton text="Play Again" enabled={true} onClick={replay}/>}
-
+        {done && <AppButton text="Play Again" enabled={true} onClick={replay}/>}
+      </div>
     </div>
   );
 }

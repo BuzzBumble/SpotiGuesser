@@ -1,5 +1,3 @@
-import { isPropertySignature } from "typescript";
-
 const AppButton = ({ text, onClick, enabled }) => {
   const style = {
     color: "black",
