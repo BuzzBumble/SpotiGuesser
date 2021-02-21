@@ -6,12 +6,33 @@ import Player from './Player';
 import fetch from 'node-fetch';
 // import AppButton from "./AppButton";
 
+const spotify_secret = process.env.REACT_APP_SPOTIFY_SECRET;
+const spotify_clientid = process.env.REACT_APP_SPOTIFY_CLIENTID;
+const happi_key = process.env.REACT_APP_HAPPI_KEY;
+
 export default function App() {
   const [spotifyToken, setSpotifyToken] = useState("");
+  const [songItem, setSongItem] = useState({});
+  const [isPlaying, setIsPlaying] = useState("Paused");
+  const [progress, setProgresss] = useState(0);
 
   useEffect(() => {
     getSpotifyToken();
-  })
+    if (spotifyToken != "") {
+      getCurrentlyPlaying();
+    }
+  }, [spotifyToken]);
+
+  function getCurrentlyPlaying() {
+    fetch("https://api.spotify.com/v1/me/player", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer: " + spotifyToken
+      }
+    }).then((res) => {
+      console.log(res);
+    });
+  }
 
   function getSpotifyToken() {
     const hash = window.location.hash
