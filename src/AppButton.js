@@ -1,5 +1,3 @@
-
-
 const AppButton = ({ text, onClick }) => {
   const style = {
     color: "black",

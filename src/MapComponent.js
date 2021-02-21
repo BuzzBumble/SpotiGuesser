@@ -1,14 +1,6 @@
-import { useState } from "react";
-import { MapContainer, TileLayer, Marker, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { Icon } from "leaflet";
 import mapData from './data/countries.json'
-
-const markerIcon = new Icon({
-  iconUrl:
-    "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png",
-  iconSize: [25, 25]
-});
 
 export default function MapComponent() {
   const state = {
