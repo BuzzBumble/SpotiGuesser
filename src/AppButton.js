@@ -3,11 +3,14 @@ const AppButton = ({ text, onClick }) => {
     color: "black",
     backgroundColor: "#26D863",
     padding: "10px",
-    fontFamily: "Arial",
-    borderRadius: "50px"
+    outline: 0,
+    borderRadius: "50px",
+    border: "none",
+    cursor: "pointer",
+    margin: 20,
   };
   return (
-    <button style={style} onclick={onClick}>
+    <button style={style} onClick={onClick}>
       {text}
     </button>
   );

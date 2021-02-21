@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
 .App {
-  font-family: sans-serif;
   text-align: center;
 }
 
@@ -13,7 +18,7 @@
 
 body {
   background-color: #181818;
-  color: #1ED760;
+  color: white;
 }
 
 a {
