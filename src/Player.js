@@ -30,12 +30,14 @@ export default function Player(props) {
 
   useEffect(() => {
     if(currentTrack){
+      props.setGuessable(false);
       getCountry(currentTrack["artists"][0]["name"]).then((country)=>{
         if(country == ""){
           let removed = playlist.shift();
           setCurrentTrack(playlist[0]);
         }else{
           props.setCountry(country)
+          props.setGuessable(true);
           currentTrack.country = country
         }
       })
