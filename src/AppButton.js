@@ -10,7 +10,6 @@ const AppButton = ({ text, onClick, enabled }) => {
     margin: 10,
   };
 
-  console.log("Text: " + enabled);
   return (
     <button style={style} onClick={onClick} disabled={!enabled}>
       {text}
