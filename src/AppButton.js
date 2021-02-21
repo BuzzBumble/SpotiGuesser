@@ -12,7 +12,7 @@ const AppButton = ({ text, onClick }) => {
     margin: 20,
   };
   return (
-    <button style={style} onclick={onClick}>
+    <button style={style} onClick={onClick}>
       {text}
     </button>
   );
