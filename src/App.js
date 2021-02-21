@@ -1,4 +1,5 @@
 import "./styles.css";
+
 import MapComponent from "./MapComponent";
 
 import {useEffect, useState} from 'react';
@@ -15,7 +16,12 @@ export default function App() {
   const [playlist, setPlaylist] = useState([]);
   const [currentTrack, setCurrentTrack] = useState({});
   const [trackCountry, setTrackCountry] = useState("");
+  const [choice, setChoice] = useState({});
 
+  const handleChoice = country => {
+    setChoice(country);
+  };
+  
   useEffect(() => {
     if (spotifyToken == "") {
       getSpotifyToken().then((data) => {
@@ -47,9 +53,10 @@ export default function App() {
   return (
     <div className="App">
       <h1>SpotiGuessr</h1>
-      <MapComponent />
-      <AppButton text="Make Guess" />
+      <MapComponent onCountryChange={handleChoice} />
       <Player url={currentTrack.preview_url} />
+      <AppButton text="Make Guess" />
+      <div>Choice: {choice.ADMIN}</div>
     </div>
   );
 }
