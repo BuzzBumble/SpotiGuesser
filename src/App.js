@@ -15,6 +15,7 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState("Paused");
   const [progress, setProgresss] = useState(0);
   const [playlist, setPlaylist] = useState([]);
+  const [currentTrack, setCurrentTrack] = useState({});
 
   useEffect(() => {
     if (spotifyToken == "") {
@@ -23,7 +24,11 @@ export default function App() {
       });
     } else {
       getSpotifyPlaylist(playlist_id, spotifyToken).then((data) => {
-        setPlaylist(data.items)
+        let tracks = data.items.map((item) => {
+          return item.track;
+        })
+        setPlaylist(tracks)
+        setCurrentTrack(tracks[Math.floor(Math.random() * data.total)]);
       });
     }
   }, [spotifyToken]);
