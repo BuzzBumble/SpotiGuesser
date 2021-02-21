@@ -43,8 +43,7 @@ The front-end is built with React using functional components and hooks. Our map
 
 
 ## Made with care by:
-<!-- 
-![Group photo]() -->
+![Group photo](./img/group.png)
 
 
 ```json5
