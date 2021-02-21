@@ -1,5 +1,6 @@
 import React from "react";
 import "./player.css";
+import happi from "happi-dev-sdk";
 
 export default function Player(props) {
   const backgroundStyles = {
@@ -9,6 +10,14 @@ export default function Player(props) {
   const progressBarStyles = {
     width: (props.progress_ms * 100 / props.item.duration_ms) + '%'
   };
+
+  function getCountry(query_artist){
+    happi.music.search(query_artist, 1, artist).then(response => {
+      console.log(response);
+    }).catch(err => {
+        console.log("Error",err);
+    });
+  }
 
   return (
     <div className="player">
