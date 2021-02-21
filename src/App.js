@@ -1,5 +1,6 @@
 import "./styles.css";
 import MapComponent from "./MapComponent";
+
 import {useEffect, useState} from 'react';
 import Player from './Player';
 import {getSpotifyToken, getSpotifyPlaylist} from './helpers/spotify';
@@ -8,6 +9,7 @@ import {getCountry} from './helpers/happi-dev';
 // import SpotifyAuthButton from "./SpotifyAuthButton";
 
 const playlist_id = "3OLYDyPxRRHWASFWJ4D7I6";
+
 
 export default function App() {
   const [spotifyToken, setSpotifyToken] = useState("");
@@ -52,6 +54,10 @@ export default function App() {
 {/*       <SpotifyAuthButton /> */}
       {/* <AppButton text="Make Guess" /> */}
       <Player url={currentTrack.preview_url} />
+      <h1>SpotiGuessr</h1>
+      <SpotifyAuthButton />
+      <MapComponent />
+      <AppButton text="Make Guess" />
     </div>
   );
 }

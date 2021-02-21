@@ -1,21 +1,51 @@
-import { useState } from "react";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
-import "leaflet-css";
-import { Icon } from "leaflet";
-
-const markerIcon = new Icon({
-  iconUrl:
-    "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png",
-  iconSize: [25, 25]
-});
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import mapData from './data/countries.json'
 
 export default function MapComponent() {
+  const bounds = new L.LatLngBounds(new L.LatLng(-90,-180), new L.LatLng(90,180));
+
   const state = {
     center: [51.505, -0.091],
     zoom: 3
   };
 
-  const [markerPos, setMarkerPos] = useState([51.505, -0.091]);
+  const countryStyle = {
+    color: "black",
+    fillColor: "white",
+    fillOpacity: 0.1,
+    weight: 1
+  }
+
+  let currentCountry = null;
+
+  const highlightCountry = (event, countryName) => {
+    console.log(countryName);
+    if (currentCountry != null) {
+      currentCountry.setStyle({
+        fillColor: "white",
+        fillOpacity: 0.1,
+      });
+    }
+    event.target.setStyle({
+      fillColor: "green",
+      fillOpacity: 0.5,
+    });
+  };
+
+  const onEachCountry = (country, layer) => {
+
+    const countryName = country.properties.ADMIN;
+
+    layer.bindPopup(`${countryName}`);
+    layer.on({
+      click: (event) => {
+        highlightCountry(event, countryName);
+        currentCountry = layer;
+      },
+    });
+  };
+
   return (
     <MapContainer
       doubleClickZoom={false}
@@ -23,17 +53,14 @@ export default function MapComponent() {
       center={state.center}
       zoom={state.zoom}
       id={"map"}
-      whenReady={(map) => {
-        map.target.on("click", function (e) {
-          setMarkerPos(e.latlng);
-        });
-      }}
+      maxBounds={bounds}
+      minZoom={2}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={markerPos} icon={markerIcon} />
+      <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry}/>
     </MapContainer>
   );
 }
