@@ -30,31 +30,31 @@ export default function App(){
     }
   }
 
+  const replay = () => {
+      setDone(false);
+      setPlaying(true);
+      setScore(0);
+      setChoice();
+      trackCountryHistory = [];
+      selectedCountryHistory = [];
+  }
 
-  return !done?(
+
+  return (
     <div id="App" className="App">
       <h1>SpotiGuessr</h1>
-      <MapComponent playing={playing} onCountryChange={(country) => {setChoice(country);}} />
-      <Player id="player" playing={playing} setPlaying={setPlaying}
+      {!done? <div><MapComponent playing={playing} onCountryChange={(country) => {setChoice(country);}} />
+      <Player playing={playing} setPlaying={setPlaying}
         setCountry={(trackCountry)=>{
           console.log(`answer:${trackCountry}`)
           trackCountryHistory.push(trackCountry);}}/>
       {playing && <AppButton text="Make Guess" onClick={makeGuess}/>}
-      {choice && <div>Choice: {choice.ADMIN}</div>}
+      {choice && <div>Choice: {choice.ADMIN}</div>}</div> : <br/>}
+
       <div>Score: {score}</div>
-    </div>
-  ):(
-    <div id="App" className="App">
-      <h1>SpotiGuessr</h1>
-      <div>Score: {score}</div>
-      <AppButton text="Play Again" onClick={()=>{
-        setDone(false);
-        setPlaying(true);
-        setScore(0);
-        setChoice();
-        trackCountryHistory = [];
-        selectedCountryHistory = [];
-      }}/>
+
+      {done && <AppButton text="Play Again" onClick={replay}/>}
+
     </div>
   );
 }
