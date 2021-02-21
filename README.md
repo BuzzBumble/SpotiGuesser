@@ -16,7 +16,7 @@ SpotiGuesser brings players around the world to challenges their perceptions of 
 
 SpotiGuesser is web based game where 30 seconds of a randomly selected song is played and users gain points for correctly guessing the correct nationality of the song's artist.
 
-## How it works
+## How we built it
 Spotiguesser pulls tracks from a playlist through Spotify's developer API. Information about the artist and the track are pulled from happi-dev's api, providing us information such as the artist's nationality.
 
 The front-end is built with React using functional components and hooks. Our map is rendered with leaflet and MapBox.
@@ -39,7 +39,7 @@ The front-end is built with React using functional components and hooks. Our map
 - Scoreboards to compete with others
 - More nuanced scoring taking in to account guess distance, time taken etc.
 - More things to guess such as year of the song or song name
-- Battle Royal mode to compete with friends live
+- Battle Royale mode to compete with friends live
 
 
 ## Made with care by:
