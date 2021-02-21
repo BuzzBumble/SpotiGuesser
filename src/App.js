@@ -5,7 +5,7 @@ import MapComponent from "./MapComponent";
 import AppButton from "./AppButton";
 
 export default function App() {
-  const [choice, setChoice] = useState('');
+  const [choice, setChoice] = useState({});
 
   const handleChoice = country => {
     setChoice(country);
@@ -17,7 +17,7 @@ export default function App() {
       <SpotifyAuthButton />
       <MapComponent onCountryChange={handleChoice} />
       <AppButton text="Make Guess" />
-      <div>Choice: {choice}</div>
+      <div>Choice: {choice.ADMIN}</div>
     </div>
   );
 }

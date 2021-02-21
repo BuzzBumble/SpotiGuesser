@@ -11,17 +11,16 @@ export default function MapComponent(props) {
   };
 
   const countryStyle = {
-    color: "black",
     fillColor: "white",
     fillOpacity: 0.1,
-    weight: 1
+    weight: 0
   }
 
   let currentCountry = null;
 
-  const highlightCountry = (event, countryName) => {
-    props.onCountryChange(countryName);
-    console.log(countryName);
+  const highlightCountry = (event, countryProperties) => {
+    props.onCountryChange(countryProperties);
+
     if (currentCountry != null) {
       currentCountry.setStyle({
         fillColor: "white",
@@ -40,7 +39,7 @@ export default function MapComponent(props) {
     layer.bindPopup(`${countryName}`);
     layer.on({
       click: (event) => {
-        highlightCountry(event, countryName);
+        highlightCountry(event, country.properties);
         currentCountry = layer;
       },
     });
