@@ -8,7 +8,7 @@ const playlist_id = "3OLYDyPxRRHWASFWJ4D7I6";
 
 export default function Player(props) {
   const style = {
-    margin: 15,
+    margin: "15",
   };
 
   const [spotifyToken, setSpotifyToken] = useState("");
