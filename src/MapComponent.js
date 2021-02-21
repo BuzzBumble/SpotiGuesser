@@ -12,7 +12,7 @@ const markerIcon = new Icon({
 export default function MapComponent() {
   const state = {
     center: [51.505, -0.091],
-    zoom: 5
+    zoom: 3
   };
 
   const [markerPos, setMarkerPos] = useState([51.505, -0.091]);
