@@ -43,3 +43,7 @@ button:disabled,
 button[disabled] {
   background-color: grey;
 }
+
+#loading-img{
+  margin:0 auto;
+}

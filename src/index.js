@@ -9,5 +9,5 @@ setTimeout(()=>{ReactDOM.render(
     <App />
   </StrictMode>,
   rootElement
-);},200)
+);},600)
 
