@@ -13,6 +13,7 @@ SpotiGuesser brings players around the world to challenges their perceptions of 
 
 ## What it does
 ![logo gif](./img/demo.gif)
+
 SpotiGuesser is web based game where 30 seconds of a randomly selected song is played and users gain points for correctly guessing the correct nationality of the song's artist.
 
 ## How it works
