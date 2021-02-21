@@ -54,6 +54,7 @@ export default function MapComponent() {
       zoom={state.zoom}
       id={"map"}
       maxBounds={bounds}
+      minZoom={2}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
