@@ -42,7 +42,7 @@ The front-end is built with React using functional components and hooks. Our map
 - Battle Royal mode to compete with friends live
 
 
-##Made with care by:
+## Made with care by:
 <!-- 
 ![Group photo]() -->
 
