@@ -8,7 +8,6 @@
   ],
   "main": "src/index.js",
   "dependencies": {
-    "happi-dev-sdk": "^1.0.26",
     "leaflet": "1.7.1",
     "leaflet-css": "0.1.0",
     "node-fetch": "2.6.1",

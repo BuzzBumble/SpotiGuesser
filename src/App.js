@@ -57,6 +57,7 @@ export default function App() {
       <div>{spotifyToken}</div>
       <SpotifyAuthButton />
       <MapComponent />
+      <Player/>
       {/* <AppButton text="Make Guess" /> */}
     </div>
   );
