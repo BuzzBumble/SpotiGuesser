@@ -8,7 +8,7 @@ const playlist_id = "3OLYDyPxRRHWASFWJ4D7I6";
 export default function Player(props) {
   const [spotifyToken, setSpotifyToken] = useState("");
   const [playlist, setPlaylist] = useState([]);
-  const [currentTrack, setCurrentTrack] = useState({});
+  const [currentTrack, setCurrentTrack] = useState();
 
   useEffect(() => {
     if (spotifyToken == "") {
@@ -22,18 +22,19 @@ export default function Player(props) {
         })
         shuffle(tracks)
         setPlaylist(tracks)
-        setCurrentTrack(playlist[0]);
+        setCurrentTrack(tracks[0]);
       });
     }
   }, [spotifyToken]);
 
   useEffect(() => {
-    if(Object.keys(currentTrack).length>0){
+    if(currentTrack){
       getCountry(currentTrack["artists"][0]["name"]).then((country)=>{
         if(country == ""){
           let removed = playlist.shift();
           setCurrentTrack(playlist[0]);
         }else{
+          console.log(country)
           props.setCountry(country)
         }
       })
@@ -42,7 +43,7 @@ export default function Player(props) {
 
   return (
     <ReactAudioPlayer
-      src={currentTrack.preview_url}
+      src={currentTrack?currentTrack.preview_url: ""}
       volume={0.3}
       controls
     />
