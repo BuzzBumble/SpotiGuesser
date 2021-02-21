@@ -8,28 +8,42 @@ export default function MapComponent() {
     zoom: 3
   };
 
+  const countryStyle = {
+    fillColor: "white",
+    fillOpacity: 0.1,
+    weight: 1
+  }
+
+
   const highlightCountry = (event) => {
     event.target.setStyle({
       fillColor: "green",
       fillOpacity: 0.5,
     });
   };
-  
+
+  const unHighlightCountry = (event) => {
+    event.target.setStyle({
+      fillColor: "white",
+      fillOpacity: 0.1,
+    });
+  };
+
+
+
   const onEachCountry = (country, layer) => {
+
     const countryName = country.properties.ADMIN;
+
     layer.bindPopup(`${countryName}`);
     
     layer.on({
-      click: highlightCountry,
+      mouseover: highlightCountry,
+      mouseout: unHighlightCountry,
     });
+    
   };
-  
-  const countryStyle = {
-    fillColor: "white",
-    fillOpacity: 0.1,
-    weight: 1
-  }
-  
+
   return (
     <MapContainer
       doubleClickZoom={false}
