@@ -42,7 +42,10 @@ export default function App(){
 
   return (
     <div id="App" className="App">
+    <div className="title">
+      <img id="logo" src="./img/spotiguesser.svg"/>
       <h1>SpotiGuessr</h1>
+    </div> 
 
       {!done? <div><MapComponent playing={playing} onCountryChange={(country) => {setChoice(country);}} />
       <Player playing={playing} setPlaying={setPlaying}
