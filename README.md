@@ -39,7 +39,7 @@ The front-end is built with React using functional components and hooks. Our map
 - Scoreboards to compete with others
 - More nuanced scoring taking in to account guess distance, time taken etc.
 - More things to guess such as year of the song or song name
-- Battle Royal mode to compete with friends live
+- Battle Royale mode to compete with friends live
 
 
 ## Made with care by:
