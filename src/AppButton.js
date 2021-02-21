@@ -7,7 +7,7 @@ const AppButton = ({ text, onClick }) => {
     borderRadius: "50px",
     border: "none",
     cursor: "pointer",
-    margin: 20,
+    margin: 10,
   };
   return (
     <button style={style} onClick={onClick}>

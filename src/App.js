@@ -43,7 +43,6 @@ export default function App(){
   return (
     <div id="App" className="App">
       <h1>SpotiGuessr</h1>
-
       {!done? <div><MapComponent playing={playing} onCountryChange={(country) => {setChoice(country);}} />
       <Player playing={playing} setPlaying={setPlaying}
         setCountry={(trackCountry)=>{
