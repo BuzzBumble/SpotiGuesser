@@ -31,7 +31,6 @@ export default function App(){
       }
     }
     if(selectedCountryHistory.length == 5){
-      console.log("done")
       setDone(true);
     }
   }
