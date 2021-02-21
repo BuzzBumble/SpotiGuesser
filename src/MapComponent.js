@@ -17,18 +17,19 @@ export default function MapComponent() {
     weight: 1
   }
 
+  let currentCountry = null;
 
-  const highlightCountry = (event) => {
+  const highlightCountry = (event, countryName) => {
+    console.log(countryName);
+    if (currentCountry != null) {
+      currentCountry.setStyle({
+        fillColor: "white",
+        fillOpacity: 0.1,
+      });
+    }
     event.target.setStyle({
       fillColor: "green",
       fillOpacity: 0.5,
-    });
-  };
-
-  const unHighlightCountry = (event) => {
-    event.target.setStyle({
-      fillColor: "white",
-      fillOpacity: 0.1,
     });
   };
 
@@ -37,10 +38,11 @@ export default function MapComponent() {
     const countryName = country.properties.ADMIN;
 
     layer.bindPopup(`${countryName}`);
-    
     layer.on({
-      mouseover: highlightCountry,
-      mouseout: unHighlightCountry,
+      click: (event) => {
+        highlightCountry(event, countryName);
+        currentCountry = layer;
+      },
     });
   };
 
