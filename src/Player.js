@@ -7,10 +7,6 @@ import ResultDisplay from './ResultDisplay';
 const playlist_id = "3OLYDyPxRRHWASFWJ4D7I6";
 
 export default function Player(props) {
-  const style = {
-    margin: "15",
-  };
-
   const [spotifyToken, setSpotifyToken] = useState("");
   const [playlist, setPlaylist] = useState([]);
   const [currentTrack, setCurrentTrack] = useState();
@@ -55,7 +51,6 @@ export default function Player(props) {
   return (
     <div>
       <ReactAudioPlayer
-        style={style}
         src={currentTrack?currentTrack.preview_url: ""}
         volume={0.3}
         controls
