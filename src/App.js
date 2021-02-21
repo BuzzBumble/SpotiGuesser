@@ -2,8 +2,8 @@ import "./styles.css";
 import MapComponent from "./MapComponent";
 import {useEffect, useState} from 'react';
 import Player from './Player';
-import fetch from 'node-fetch';
 import {getSpotifyToken, getSpotifyPlaylist} from './helpers/spotify';
+import {getCountry} from './helpers/happi-dev';
 // import AppButton from "./AppButton";
 // import SpotifyAuthButton from "./SpotifyAuthButton";
 
@@ -11,11 +11,9 @@ const playlist_id = "3OLYDyPxRRHWASFWJ4D7I6";
 
 export default function App() {
   const [spotifyToken, setSpotifyToken] = useState("");
-  const [songItem, setSongItem] = useState({});
-  const [isPlaying, setIsPlaying] = useState("Paused");
-  const [progress, setProgresss] = useState(0);
   const [playlist, setPlaylist] = useState([]);
   const [currentTrack, setCurrentTrack] = useState({});
+  const [trackCountry, setTrackCountry] = useState("");
 
   useEffect(() => {
     if (spotifyToken == "") {
@@ -33,11 +31,24 @@ export default function App() {
     }
   }, [spotifyToken]);
 
+  useEffect(() => {
+    if(Object.keys(currentTrack).length>0){
+      getCountry(currentTrack["artists"][0]["name"]).then((country)=>{
+        if(country == ""){
+          setCurrentTrack(playlist[Math.floor(Math.random() * playlist.length)]);
+        }else{
+          setTrackCountry(country)
+        }
+      })
+    }
+  },[currentTrack]);
+
   return (
     <div className="App">
       <h1>Ya yeet</h1>
       <div>{spotifyToken}</div>
       <MapComponent />
+      {/* <Player/> */}
 {/*       <SpotifyAuthButton /> */}
       {/* <AppButton text="Make Guess" /> */}
       <Player url={currentTrack.preview_url} />
