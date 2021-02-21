@@ -1,4 +1,6 @@
-const AppButton = ({ text, onClick }) => {
+import { isPropertySignature } from "typescript";
+
+const AppButton = ({ text, onClick, enabled }) => {
   const style = {
     color: "black",
     backgroundColor: "#26D863",
@@ -9,8 +11,10 @@ const AppButton = ({ text, onClick }) => {
     cursor: "pointer",
     margin: 10,
   };
+
+  console.log("Text: " + enabled);
   return (
-    <button style={style} onClick={onClick}>
+    <button style={style} onClick={onClick} disabled={!enabled}>
       {text}
     </button>
   );

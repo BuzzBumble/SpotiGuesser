@@ -10,7 +10,7 @@ export default function ResultDisplay(props) {
         <div>
             <div>{(props.track)?props.track.name:""}</div>
             <div>By {artist} from {country}</div>
-            <AppButton text="next"onClick={props.onNextSong}/>
+            <AppButton text="next"onClick={props.onNextSong} enabled={true}/>
         </div>
     )
 }
