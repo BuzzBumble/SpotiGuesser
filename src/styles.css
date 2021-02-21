@@ -6,8 +6,9 @@
 #map {
   margin-top:10px;
   height: 400px;
-  width: 100%;
+  width: 95%;
   border-radius: 12px;
+  margin:0 auto;
 }
 
 body {
