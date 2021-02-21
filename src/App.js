@@ -35,7 +35,7 @@ export default function App(){
     <div id="App" className="App">
       <h1>SpotiGuessr</h1>
       <MapComponent playing={playing} onCountryChange={(country) => {setChoice(country);}} />
-      <Player playing={playing} setPlaying={setPlaying}
+      <Player id="player" playing={playing} setPlaying={setPlaying}
         setCountry={(trackCountry)=>{
           console.log(`answer:${trackCountry}`)
           trackCountryHistory.push(trackCountry);}}/>
