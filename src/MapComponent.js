@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MapContainer, TileLayer, Marker, GeoJSON } from "react-leaflet";
-import "leaflet-css";
+import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
 import mapData from './data/countries.json'
 
@@ -16,26 +16,28 @@ export default function MapComponent() {
     zoom: 3
   };
 
+  const highlightCountry = (event) => {
+    event.target.setStyle({
+      fillColor: "green",
+      fillOpacity: 0.5,
+    });
+  };
+  
   const onEachCountry = (country, layer) => {
     const countryName = country.properties.ADMIN;
-    layer.bindPopup(countryName);
-  
+    layer.bindPopup(`${countryName}`);
+    
     layer.on({
-      click: (event) => {
-        event.target.setStyle({
-          fillColor: "green"
-        })
-      }
+      click: highlightCountry,
     });
   };
   
   const countryStyle = {
     fillColor: "white",
     fillOpacity: 0.1,
-    weight: 0
+    weight: 1
   }
   
-  const [markerPos, setMarkerPos] = useState([51.505, -0.091]);
   return (
     <MapContainer
       doubleClickZoom={false}
@@ -43,18 +45,12 @@ export default function MapComponent() {
       center={state.center}
       zoom={state.zoom}
       id={"map"}
-      // whenReady={(map) => {
-      //   map.target.on("click", function (e) {
-      //     setMarkerPos(e.latlng);
-      //   });
-      // }}
     >
-      <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry}/>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/* <Marker position={markerPos} icon={markerIcon} /> */}
+      <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry}/>
     </MapContainer>
   );
 }
