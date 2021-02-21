@@ -1,8 +1,7 @@
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import mapData from './data/countries.json'
-
-const mapboxToken = process.env.REACT_APP_MAPBOX_TOKEN;
+import mapboxToken from './helpers/mapbox'
 
 export default function MapComponent(props) {
   let url = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${mapboxToken}`
