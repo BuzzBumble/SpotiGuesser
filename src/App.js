@@ -51,6 +51,7 @@ export default function App() {
       {/* <Player/> */}
 {/*       <SpotifyAuthButton /> */}
       {/* <AppButton text="Make Guess" /> */}
+      <Player url={currentTrack.preview_url} />
     </div>
   );
 }
