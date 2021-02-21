@@ -12,6 +12,7 @@ export default function App(){
   const [score, setScore] = useState(0);
   const [choice, setChoice] = useState();
   const [playing, setPlaying] = useState(true);
+  const [done, setDone] = useState(false);
   
   // const [trackCountryHistory, setTrackCountry] = useState([]);
   // const [selectedCountryHistory, setSelectedCountry] = useState([]);
@@ -23,19 +24,37 @@ export default function App(){
         setScore(score+1);
       }
     }
+    if(selectedCountryHistory.length == 5){
+      console.log("done")
+      setDone(true);
+    }
   }
 
-  return (
-    <div className="App">
+
+  return !done?(
+    <div id="App" className="App">
       <h1>SpotiGuessr</h1>
       <MapComponent playing={playing} onCountryChange={(country) => {setChoice(country);}} />
       <Player playing={playing} setPlaying={setPlaying}
         setCountry={(trackCountry)=>{
           console.log(`answer:${trackCountry}`)
           trackCountryHistory.push(trackCountry);}}/>
-      <AppButton text="Make Guess" onClick={makeGuess}/>
-      <div>Choice: {choice?choice.ADMIN:""}</div>
+      {playing && <AppButton text="Make Guess" onClick={makeGuess}/>}
+      {choice && <div>Choice: {choice.ADMIN}</div>}
       <div>Score: {score}</div>
+    </div>
+  ):(
+    <div id="App" className="App">
+      <h1>SpotiGuessr</h1>
+      <div>Score: {score}</div>
+      <AppButton text="Play Again" onClick={()=>{
+        setDone(false);
+        setPlaying(true);
+        setScore(0);
+        setChoice();
+        trackCountryHistory = [];
+        selectedCountryHistory = [];
+      }}/>
     </div>
   );
 }

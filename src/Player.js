@@ -36,6 +36,7 @@ export default function Player(props) {
           setCurrentTrack(playlist[0]);
         }else{
           props.setCountry(country)
+          currentTrack.country = country
         }
       })
     }
@@ -44,13 +45,9 @@ export default function Player(props) {
   function onNextSong(){
     let removed = playlist.shift();
     setCurrentTrack(playlist[0]);
-    props.setPlaying(true);
+    props.setPlaying(true)
   }
 
-  let resultDisplay="";
-  if (!props.playing){
-    resultDisplay = <ResultDisplay track={currentTrack} onNextSong={onNextSong}/>
-  }
   return (
     <div>
       <ReactAudioPlayer
@@ -58,7 +55,8 @@ export default function Player(props) {
         volume={0.3}
         controls
       />
-      {resultDisplay}
+      <br/>
+      {!props.playing && <ResultDisplay track={currentTrack} onNextSong={onNextSong}/>}
     </div>
     
   );
